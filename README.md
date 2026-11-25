@@ -1,80 +1,127 @@
-Smart India Hackathon – Workshop Submission
-Date: 25.11.2026
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farm Connect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-Reference Number: SIH 26033
+<header>
+    <h2>🌱 Smart Farm Connect</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#market">Marketplace</a>
+        <a href="#farmer">Farmers</a>
+        <a href="#smart">AI Tools</a>
+    </nav>
+    <button onclick="showCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
 
-Name: AJISHRAJ.B
-Problem Title
-SIH 26033: Multiple intermediaries reduce farmers' earnings and increase consumer prices.
-Problem Creator's Organization
-Ministry of Consumer Affairs, Food & Public Distribution
-Theme
-Agriculture, FoodTech & Rural Development
-Proposed Solution
-Smart Farm Connect – Direct Farmer to Consumer Marketplace
+<section class="hero" id="home">
+    <div>
+        <h1>Farm Fresh.<br><span>Direct to You.</span></h1>
+        <p>Connecting farmers directly with consumers.
+           Better prices for farmers and fresh products for everyone.</p>
+        <a href="#market" class="btn">Explore Marketplace</a>
+    </div>
+    <div class="hero-image">🌾 🚜 🥬</div>
+</section>
 
-Our proposed solution is a digital platform that directly connects farmers, Farmer Producer Organizations (FPOs), consumers, retailers and bulk buyers.
+<section class="stats">
+    <div><h2>Direct</h2><p>Farmer Connection</p></div>
+    <div><h2>Fair</h2><p>Product Pricing</p></div>
+    <div><h2>Smart</h2><p>AI Technology</p></div>
+</section>
 
-The platform allows farmers to upload their products, quantity, quality and expected prices. Consumers can view available products and purchase them directly from farmers.
+<section id="market">
+    <h2>Fresh Products</h2>
+    <p>Buy directly from farmers.</p>
 
-The platform also provides:
-1. Direct buying and selling without unnecessary intermediaries.
-2. Transparent product pricing.
-3. AI-based demand forecasting to predict market demand.
-4. Logistics support for transportation and delivery.
-5. Route optimization to reduce delivery time and transportation costs.
-This solution helps farmers earn better profits and allows consumers to purchase fresh agricultural products at affordable prices.
-Technical Approach
-The proposed platform will use the following technologies:
-Technology	Purpose
-HTML, CSS, JavaScript	Frontend development
-Python	Backend development
-MySQL	Database management
-AI/ML	Demand forecasting
-Google Maps API	Route optimization
-Cloud Hosting	Platform deployment
+    <input type="text" id="search" placeholder="Search products..."
+           oninput="displayProducts()">
 
-Implementation Process:
-1. Farmers register and upload product details.
-2. Consumers and bulk buyers browse available products.
-3. Buyers place orders through the platform.
-4. AI predicts demand based on previous sales and market trends.
-5. The logistics system identifies suitable delivery routes.
-6. Farmers deliver products directly to buyers through supported logistics partners.
-Feasibility and Viability
-The proposed solution is technically and economically feasible because it uses commonly available technologies and internet-enabled devices.
+    <div class="filters">
+        <button onclick="filterProducts('All')">All</button>
+        <button onclick="filterProducts('Vegetables')">Vegetables</button>
+        <button onclick="filterProducts('Fruits')">Fruits</button>
+        <button onclick="filterProducts('Grains')">Grains</button>
+    </div>
 
-Potential Challenges:
-1. Limited internet access in rural areas.
-2. Transportation and delivery difficulties.
-3. Farmers may have limited technical knowledge.
-4. Maintaining product quality during transportation.
-Solutions to Overcome Challenges:
-1. Provide a simple and user-friendly mobile application.
-2. Partner with local transportation services.
-3. Provide training for farmers.
-4. Use proper packaging and delivery tracking systems.
-The platform can generate revenue through small service fees from transactions and optional logistics services.
-Impact and Benefits
-Benefits to Farmers:
-- Increased income through direct sales.
-- Better control over product pricing.
-- Access to more customers.
-- Reduced dependency on middlemen.
-Benefits to Consumers:
-- Fresh agricultural products.
-- Affordable prices.
-- Transparent product information.
-- Direct connection with farmers.
-Environmental Benefits:
-- Reduced unnecessary transportation.
-- Better route planning.
-- Reduced food wastage.
-- More efficient supply chain management.
-Overall, this solution supports farmers, consumers and sustainable agricultural development.
-Research and References
-1. Ministry of Consumer Affairs, Food & Public Distribution – Government of India.
-2. Smart India Hackathon Official Website – https://sih.gov.in/
-3. Ministry of Agriculture & Farmers Welfare – https://agriwelfare.gov.in/
-4. e-NAM (National Agriculture Market) – https://enam.gov.in/
-5. Google Maps Platform – https://developers.google.com/maps
+    <div class="products" id="productList"></div>
+</section>
+
+<section id="farmer">
+    <h2>Farmer Product Registration</h2>
+    <p>Farmers can add their agricultural products here.</p>
+
+    <form id="farmerForm">
+        <input id="productName" placeholder="Product Name" required>
+        <input id="farmerName" placeholder="Farmer Name" required>
+
+        <select id="category">
+            <option>Vegetables</option>
+            <option>Fruits</option>
+            <option>Grains</option>
+        </select>
+
+        <input id="price" type="number" min="1"
+               placeholder="Price per kg (₹)" required>
+        <input id="quantity" type="number" min="1"
+               placeholder="Available Quantity (kg)" required>
+
+        <button type="submit">Add Product</button>
+    </form>
+    <p id="message"></p>
+</section>
+
+<section id="smart">
+    <h2>Smart AI Tools</h2>
+
+    <div class="tools">
+        <div class="tool-card">
+            <h3>📊 Demand Forecasting</h3>
+            <p>Estimate future agricultural product demand.</p>
+
+            <select id="crop">
+                <option>Tomato</option>
+                <option>Rice</option>
+                <option>Onion</option>
+                <option>Potato</option>
+            </select>
+
+            <button onclick="forecast()">Predict Demand</button>
+            <h3 id="prediction"></h3>
+        </div>
+
+        <div class="tool-card">
+            <h3>🚚 Logistics Support</h3>
+            <p>View a sample delivery route.</p>
+            <button onclick="planRoute()">Plan Route</button>
+            <p id="route"></p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>🌱 Smart Farm Connect</h2>
+    <p>Empowering Farmers | Connecting Consumers</p>
+    <p>Smart India Hackathon – SIH 26033</p>
+    <p>Developed by AJISHRAJ.B</p>
+</footer>
+
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <button class="close" onclick="closeCart()">Close ×</button>
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <h3 id="total">Total: ₹0</h3>
+        <button onclick="checkout()">Place Demo Order</button>
+        <p id="orderMessage"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
